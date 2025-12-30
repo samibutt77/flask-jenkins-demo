@@ -12,7 +12,7 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                sh '''
+                bat '''
                 python -m venv venv
                 . venv/bin/activate
                 pip install --upgrade pip
@@ -23,7 +23,7 @@ pipeline {
 
         stage('Run Unit Tests') {
             steps {
-                sh '''
+                bat '''
                 . venv/bin/activate
                 pytest
                 '''
@@ -38,7 +38,7 @@ pipeline {
 
         stage('Deploy Application (Simulated)') {
             steps {
-                sh '''
+                bat '''
                 mkdir -p /tmp/flask-deploy
                 cp -r * /tmp/flask-deploy/
                 echo "Application deployed to /tmp/flask-deploy"
